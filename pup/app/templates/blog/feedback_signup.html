@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <form class="site-form" action="" method="post">
+  {% csrf_token %}
+    <table class="table table-striped" frame="box" border="2">
+      {{form}}
+    </table>
+    <input type="submit" class="btn btn-success btn-block" value="Signup">
+  </form>
+</div>    
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+

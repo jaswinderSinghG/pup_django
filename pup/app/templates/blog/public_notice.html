@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="container-fluid">
+<section class="intro" style="padding-bottom: 5px;">
+    <row>
+        <div class="col-lg-7 col-sm-10 left p-0">
+          <!-- <div class="text-center card">
+            <div class="card-body">
+            <h2 class="card-header text-danger">Hello All, It's Jaswinder Singh</h2>
+            <h4 class="card-title text-danger">H</h4>
+            </div>
+          </div><br> -->
+          {% for item in pub_notice %} 
+          <div class="text-center card">
+            <div class="card-body">
+              <h2 class="card-title text-danger mysize_pn">Public Notice</h2>
+              <h2 class="card-title text-danger mysize_pn">{{ item.public_notice }}</h2>
+              <h4 class="card-header text-danger mysize_pn">Uploaded At:- {{ item.pub_date | date:"d F, Y" }}</h4>
+            </div>
+          </div><BR>
+        {% endfor %}
+        </div>
+        <div class="col-lg-5 col-sm-10 left">
+          <div class="card text-danger">
+            <div class="card-body">
+              <a href="{% url 'user_form_msg' %}">
+                <h4 class="card-header mysize_pn2">Message for Sarpanch</h4>
+                <h4 class="card-title mysize_pn2" data-toggle="tooltip" data-placement="top" title="Click here to send any message to eminent Sarpanch!">🙏ਕੋਈ  ਵੀ ਸੁਨੇਹਾ ਜਾਂ ਸ਼ਿਕਾਇਤ ਭੇਜਣ ਲਈ ਇੱਥੇ click ਕਰਕੇ ਫਾਰਮ ਭਰੋ।</h4>
+              </a>
+            
+            <table class="box">
+              <form method = "post" enctype="multipart/form-data" action="{% url 'user_form_msg' %}">
+                {% csrf_token %}
+                
+                {{form.as_p}}  
+
+                
+                <input type="submit" class="btn btn-danger btn-block" value="Submit">
+              </form>
+            </table>  
+          </div>
+      </div>
+    </row>
+</section>
+
+</div>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+{% endblock %}    
+</body>
+</html>
+
+
+
+
+
+
+

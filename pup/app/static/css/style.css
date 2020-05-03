@@ -1,0 +1,108 @@
+
+.mysize {
+  padding: 5px;
+ 
+}
+
+@media screen and (min-width: 601px) {
+  /*.mysize {
+    font-size: 20px;
+  }*/
+  .fsize {
+    font-size: 30px;
+  }
+  .image {
+    height: 140px;
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 600px) {   /*Phone*/
+  .mysize {
+    font-size: 15px;
+  }
+  .image {
+    height: 130px;
+    width: 130px;
+  }
+  .mysizeee {
+    font-size: 12px;
+  }
+}
+
+/*@media screen and (max-width: 600px) {
+  .image {
+    height: 130px;
+    width: 130px;
+  }
+}*/
+.example1 {
+  background-image: url("{% static "images/backk.gif" %}");
+  /*background-color: red;*/
+  /*background-position: right bottom, left top;
+  background-repeat: no-repeat, repeat;*/
+  padding: -5px;
+}
+
+.example {
+  background-image: url("{% static "images/sky.jpeg" %}");
+}
+
+
+div.mysize {
+  padding: 5px;
+  /*background-color: lightgrey;*/
+}
+
+@media screen and (min-width: 601px) {
+  div.mysize {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {      /* Phone*/
+  div.mysize {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {   /*Phone*/
+  .mysizecard {
+    font-size: 20px;
+  }
+}
+
+ @media screen and (max-width: 600px) {   /*Phone*/
+  .mysize_pm {
+    font-size: 17px;
+    }
+  }
+
+
+@media screen and (min-width: 601px) {
+  .mysize_pn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {   /*Phone*/
+  .mysize_pn {
+    font-size: 10px;
+  }
+  .mysize_pn2 {
+    font-size: 15px;
+  }
+}
+
+
+@media screen and (min-width: 601px) {
+  .mysize_stu {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {   /*Phone*/
+  .mysize_stu {
+    font-size: 12px;
+  }
+}

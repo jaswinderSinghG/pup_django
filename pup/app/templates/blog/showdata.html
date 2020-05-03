@@ -1,0 +1,416 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+
+{% load humanize %}
+{% if user.is_authenticated %}
+  {% if user.is_superuser %}
+<div class="container-fluid">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-4">
+      <h4 class="text-danger"><b class="text-success">Welcome You are superuser</b>{{user.first_name}}</h4>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-4">
+      <a class="btn btn-danger float-right" href="feedback_signup_view">Create new user</a>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-4">  
+      <form method="GET" action="{% url 'logout_view' %}">
+        <button type="submit" class="btn btn-danger float-right">logout</button><br><br><br>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-md-6 col-lg-6 bg-success">
+        <div class="row justify-content-center">
+          <!-- <h4 class="text-white row justify-content-center" style="font-size: 2vw;">Admin name with image</h4> -->
+          <table class="table" frame="box">
+            <thead>
+              <tr class="row100 head bg-warning">
+                <th class="cell100 column1"></th>
+                <th class="cell100 column1"></th>
+                <th class="cell100 column1"></th>
+                <th class="cell100 column4"><a class="btn btn-danger" href="admin_name">Change admin image and name</a></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in data3 %}
+              <tr class="row100 body">
+                <td class="cell100 column1">{{item.base_admin_name}}</td>
+                <td class="cell100 column2"></td>
+                <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.base_admin_pic.url}}" alt="logo" alt="Responsive image"></td>
+                <td><a href="Admin_item_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-md-6 col-lg-6 bg-warning">
+        <table class="table" frame="box">
+          <thead>
+          <tr class="row100 head bg-success">
+            <th class="cell100 column1">Full Name</th>
+              <th class="cell100 column2">Mobile Number</th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column3"></th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="upload_image">Add New Members</a></th>
+          </tr>  
+          </thead>
+          {% for item in data %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.full_name}}</td>
+              <td class="cell100 column2">{{item.Mobile_Number}}</td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.image.url}}" alt="logo" alt="Responsive image"></td></td>
+              <td><a href="delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-success">
+      <div class="row justify-content-center">
+        <!-- <h4 class="text-white row justify-content-center" style="font-size: 2vw;">Home page Article with image</h4> -->
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-warning">
+              <th class="cell100 column1">Best Article</th>
+              <th class="cell100 column2"></th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column4"></th>
+              <th class="cell100 column4"></th>
+              <th class="cell100 column5"><a class="btn btn-danger" href="home_update">Add Article with Image</a></th>
+            </tr>
+          </thead>
+          {% for item in data1 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.best_article}}</td>
+              <td class="cell100 column2"></td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.home_fixed_image.url}}" alt="logo" alt="Responsive image"></td>
+              <td></td>
+              <td></td>
+              <td><a href="article_image_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>    
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-warning">
+      <div class="row justify-content-center">
+        <!-- <h4 class="text-white row justify-content-center" style="font-size: 2vw;">Add dynamic images</h4> -->
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1"></th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column3"></th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="home_dynamic_images">Gallery</a></th>
+            </tr>
+          </thead>
+          {% for item in data2 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1"></td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.home_dynamic_images.url}}" alt="logo" alt="Responsive image"></td>
+              <td>You can add only 10 pics</td>
+              <td><a href="delete_gallery_item/{{item.id}}" class="btn btn-danger float-right">Remove</a>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br><br>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-success">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 1.5vw;">Student name, Quote and Image (Max 6 students can be added)</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Student Name</th>
+              <th class="cell100 column3">Quote</th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="school_view">Add Student</a></th>
+            </tr>
+          </thead>
+          {% for item in data5 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.name_of_student}}</td>
+              <td class="cell100 column1">{{item.quote}}</td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.image_of_year.url}}" alt="logo" alt="Responsive image"></td>
+              <td><a href="School_item_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-warning">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 2vw;">School Faculty and notice</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Notice</th>
+              <th class="cell100 column3">Name</th>
+              <th class="cell100 column3">Mobile</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="school_admission">School Notice</a></th>
+            </tr>
+          </thead>
+          {% for item in data4 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.notice}}</td>
+              <td class="cell100 column1">{{item.mentor_name}}</td>
+              <td class="cell100 column1">{{item.mobile_Number}}</td>
+              <td><a href="edit/{{item.id}}" class="btn btn-danger float-right">Edit</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+  </div>
+  </div><br><br>
+  
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-success">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 1.5vw;">Activities page data</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Title</th>
+              <th class="cell100 column3">Explanation</th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column3">Date</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="run_activity">Add running Activity</a></th>
+            </tr>
+          </thead>
+          {% for item in data6 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.Title}}</td>
+              <td class="cell100 column1">{{item.explanation}}</td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.image.url}}" alt="logo" alt="Responsive image"></td>
+              <td class="cell100 column1">{{item.pub_date | date:"d F, Y"}}</td>
+              <td><a href="running_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-warning">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 2vw;">Social Notice</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Notice</th>
+              <th class="cell100 column3">Publication date</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="social_notice">Add Social Notice</a></th>
+            </tr>
+          </thead>
+          {% for item in data7 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.public_notice}}</td>
+              <td class="cell100 column1">{{item.pub_date | date:"d F, Y"}}</td>
+              <td><a href="delete_social_notice/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+  </div>
+  </div><br>
+
+  <div>
+    <div class="col-sm-10 col-md-6 col-lg-12 bg-warning">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 2vw;">This message is received from user</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Serial No.</th>
+              <th class="cell100 column1">Name</th>
+              <th class="cell100 column3">Father Name</th>
+              <th class="cell100 column3">Village</th>
+              <th class="cell100 column3">Mobile Number</th>
+              <th class="cell100 column3">Message</th>
+              <th class="cell100 column3 text-white">Total:- {{ data8.count }}</th>
+            </tr>
+          </thead>
+          {% for item in data8 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{forloop.counter}}</td>
+              <td class="cell100 column1">{{item.Name}}</td>
+              <td class="cell100 column1">{{item.Father_Name}}</td>
+              <td class="cell100 column1">{{item.Village}}</td>
+              <td class="cell100 column1">{{item.Mobile_Number}}</td>
+              <td class="cell100 column1">{{item.Message}}</td>
+              <td><a href="user_form_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+  
+
+<!-- ##################School section######################## -->
+
+  {% else %}
+  <div class="container-fluid" style="padding-bottom: 20px;">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-4">
+      <h4 class="text-black"><b class="text-danger">You have only limited rights </b>{{user.first_name}}</h4>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-4">  
+      <form method="GET" action="{% url 'logout_view' %}">
+        <button type="submit" class="btn btn-danger float-right">logout</button><br><br><br>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-success">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 1.5vw;">Student name, Quote and Image (Max 6 students can be added)</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Student Name</th>
+              <th class="cell100 column3">Quote</th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="school_view">Add Student</a></th>
+            </tr>
+          </thead>
+          {% for item in data5 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.name_of_student}}</td>
+              <td class="cell100 column1">{{item.quote}}</td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.image_of_year.url}}" alt="logo" alt="Responsive image"></td>
+              <td><a href="School_item_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-6 bg-warning">
+      <div class="row justify-content-center">
+        <h class="text-white justify-content-center" style="font-size: 2vw;">School Faculty and notice</h>
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-success">
+              <th class="cell100 column1">Notice</th>
+              <th class="cell100 column3">Name</th>
+              <th class="cell100 column3">Mobile</th>
+              <th class="cell100 column4"><a class="btn btn-danger" href="school_admission">School Notice</a></th>
+            </tr>
+          </thead>
+          {% for item in data4 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.notice}}</td>
+              <td class="cell100 column1">{{item.mentor_name}}</td>
+              <td class="cell100 column1">{{item.mobile_Number}}</td>
+              <td><a href="edit/{{item.id}}" class="btn btn-danger float-right">Edit</a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    
+  <div class="container-fluid">
+  <div class="row"  style="padding-top: 20px;">
+    <div class="col-sm-10 col-md-6 col-lg-12 bg-success">
+      <div class="row justify-content-center">
+        <table class="table" frame="box">
+          <thead>
+            <tr class="row100 head bg-warning">
+              <th class="cell100 column1">Best Article</th>
+              <th class="cell100 column2"></th>
+              <th class="cell100 column3">Image</th>
+              <th class="cell100 column4"></th>
+              <th class="cell100 column4"></th>
+              <th class="cell100 column5"><a class="btn btn-danger" href="home_update">Add Article with Image</a></th>
+            </tr>
+          </thead>
+          {% for item in data1 %}
+          <tbody>
+            <tr class="row100 body">
+              <td class="cell100 column1">{{item.best_article}}</td>
+              <td class="cell100 column2"></td>
+              <td class="cell100 column3"><img style="height: 40px; width: 40px;" src="{{item.home_fixed_image.url}}" alt="logo" alt="Responsive image"></td>
+              <td></td>
+              <td></td>
+              <td><a href="article_image_delete/{{item.id}}" class="btn btn-danger float-right">Remove</a></td>    
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+
+  </div>  
+  {% endif %}
+
+
+{% else %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-10 d-block m-auto">
+        <h1 class="text-danger"><b>Admin usage</b></h1>
+        <form class="site-form" action="" method="post">
+        {% csrf_token %}
+          <table style="" class="table table-striped" frame="box" border="4">
+            {{ form }}  
+          </table>
+          <input type="submit" class="btn btn-danger btn-block" style="font-size:3vw;" value="login">
+        </form>
+      </div>
+    </div>
+  </div>  
+{% endif %}
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My village</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- for user icon-->     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+<style>
+.example1 {
+  background-image: url("{% static "images/backk.gif" %}");
+  /*background-color: red;*/
+  /*background-position: right bottom, left top;
+  background-repeat: no-repeat, repeat;*/
+  padding: -5px;
+}
+
+.example {
+  background-image: url("{% static "images/sky.jpeg" %}");
+}
+
+</style>
+
+</head>
+
+  
+<header>
+  
+    <div class="navbar navbar-default example1">
+        <div class="container-fluid">
+          <h3 class="fsize text-lg-center text-white mysizeee">
+            <u>ਗ੍ਰਾਮ ਪੰਚਾਇਤ </u><br>ਸਰਪੰਚ ਹਰਪ੍ਰੀਤ ਸਿੰਘ</h3>
+            <img src="{% static "images/gandhiji.jpeg" %}" alt="logo" class="image img-fluid right img-circle" alt="Responsive image">
+
+            <h2 class="text-white mysize"><b>ਜੀ ਆਇਆਂ ਨੂੰ, ਪਿੰਡ Nainewal(ਬਰਨਾਲਾ)</b></h2>
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#exmp">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-expand bg-warning" id="exmp">
+                <!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">-->
+                <ul class="nav navbar-nav ml-auto font-weight-bold"><!-- navbar-right use this for right -->
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'present_members' %}">Present members</a></li>
+                    <li><a href="{% url 'login' %}">Admin</a></li>
+                    <li><a href="{% url 'school' %}">School</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Notificaions</a>
+                        <div class="dropdown-menu">
+
+                            <a class="dropdown-item" href="{% url 'public_notice' %}">Notice</a>
+                            <a class="dropdown-item" href="{% url 'activity' %}">Activities</a>
+                            
+                </ul>
+                  <!--<form action="" class="navbar-form navbar-right" role="search">
+                      <div class="form-group">
+                          <input type="text" class="form-control" placeholder="search here">
+                      </div>
+                      <button type="submit" class="btn btn-info">Search</button>
+                  </form>--> 
+
+                <p class="mysize text-right text-danger"><u>Jaswinder Singh</u></p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--<div class="container-fluid">
+<section class="intro">
+    <row>
+      <div class="col-lg-3 col-sm-12 left">
+  <h2><b>List Of Cources Which Are Provided By University</b></h2>
+</div>
+<div class="col-lg-6 col-sm-12 left">
+  <p>
+    Computer security, cybersecurity or information technology security is the protection of computer systems from theft or damage to their hardware, software or electronic data, as well as from disruption or misdirection of the services they provide
+  </p>
+</div>
+<div class="col-lg-3 col-sm-12 left">
+  <p>
+    Computer security, cybersecurity or information technology security is the protection of computer systems from theft or damage to their hardware, software or electronic data, as well as from disruption or misdirection of the services they provide
+  </p>
+</div>
+</row>
+</section>
+</div>-->
+<body class="example">
+{% block body %}
+
+{% endblock %}
+</body>
+</html>
+
+
+
+
+
+

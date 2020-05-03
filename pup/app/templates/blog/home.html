@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+{% block body %}
+    <div class="container-fluid row">
+      {% for item in Article %}
+      <div class="mysize text-black col-sm-6">
+        {{ item.best_article }}
+      </div>
+      <div class="col-sm-6 mysize">
+        <img src='{{item.home_fixed_image.url}}' alt="logo" class="img-fluid right" alt="Responsive image">
+      </div>
+      {% endfor %}
+
+    
+    </div>
+{% endblock %}
+
+
+

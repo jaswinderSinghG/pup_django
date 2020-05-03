@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1 class="mt-2 text-danger"></h1>
+        <p>Add article and Image</p>            
+          <form method = "post" enctype="multipart/form-data" action="{% url 'home_update' %}">
+            {% csrf_token %}
+            <table class="table table-striped" frame="box" border="2">{{form}}</table>
+            <input type="submit" class="btn btn-danger btn-block" value="Submit">
+            </table>
+          </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

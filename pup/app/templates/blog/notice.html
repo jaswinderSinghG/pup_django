@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% load humanize %}
+{% block body %}
+{% load static %}
+
+<div class="container-fluid" style="height: 700px;">
+
+<section class="intro" style="padding-bottom: 5px;">
+    <row>
+        <div class="col-lg-9 col-sm-10 left p-0">
+          {% for item in data6 %} 
+          <div class="text-center card bg-dark">
+            <div class="card-body" style="max-width: 100rem;">
+              <h4 class="card-header text-danger mysizecard">{{ item.Title }}</h4>
+              <h4 class="card-title text-danger mysizecard">{{ item.explanation }}</h4>
+              <img src="{{item.image.url}}" alt="logo" class="img-fluid" alt="Responsive image">
+              <h4 class="card-header text-danger">Uploaded At:- {{ item.pub_date | date:"d F, Y" |naturaltime }}<h4 class="text-danger">({{ item.pub_date |naturaltime }})</h4></h4>
+            </div>
+          </div><BR>
+        {% endfor %}
+        </div>
+        <div class="col-lg-3 col-sm-10">
+          <div class="card">
+            <div class="card-body" style="max-width: 100rem;">
+              <!-- <a href=""> -->
+                <h4 class="card-header">Nainewal</h4>
+                <h4 class="card-title" data-toggle="tooltip" data-placement="top" title="Click Me">Village development and future plans, planned by prestigious Sarpanch <b class="text-danger">Harpeet Singh</b></h4>
+              <!-- </a> -->
+          </div>
+      </div>
+    </row>
+</section>
+</div>
+
+{% endblock %}    
+
+</body>
+</html>
+
+
+
+
+
+

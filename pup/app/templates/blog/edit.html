@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block body %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="text-white row justify-content-center" style="font-size: 2vw;">School details</div>
+        <form method = "post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <table class="table" frame="box">
+          {{form}}  
+        </table>
+        <input type="submit" class="btn btn-danger btn-block" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>  
+  
+{% endblock %}
+
+
+
+
