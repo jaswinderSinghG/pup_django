@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,8 +25,8 @@ SECRET_KEY = 'f%=pzi#_8y+s!lnehfos4^6@2e^n%r0hyg2+f#%5xqb)6e@8@d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
-
+#ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.whitenoise middleware',
 ]
 
 ROOT_URLCONF = 'pup.urls'
@@ -159,3 +160,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'O0DP7uCp-XApDb3f8LYhSDgG'
 
 
 
+django_heroku.settings(locals())
